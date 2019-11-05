@@ -21,7 +21,6 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //mySpriteRenderer = GetComponent<SpriteRenderer>();
         body = GetComponent<Rigidbody2D>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -34,6 +33,7 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("No body");
         }
     }
+
     void FixedUpdate()
     {
         body.velocity = new Vector3(direction.x * speed, direction.y);
