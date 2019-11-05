@@ -1,32 +1,69 @@
-# Prerequisites
-*.d
+# Créé par https://www.gitignore.io/api/unity
+# Modifier sur https://www.gitignore.io/?templates=unity
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+### Unité ###
+# Ce fichier .gitignore doit être placé à la racine du répertoire de votre projet Unity.
+#
+# Obtenir les dernières nouvelles de https://github.com/github/gitignore/blob/master/Unity.gitignore
+/ [Ll] ibrary /
+/ [Tt] emp /
+/ [Oo] bj /
+/ [Bb] uild /
+/ [Bb] uilds /
+/ [Ll] ogs /
+/ [Mm] emoryCaptures /
 
-# Precompiled Headers
-*.gch
-*.pch
+# Ne jamais ignorer les métadonnées de l'actif
+! / [Aa] ssets / ** / *. Meta
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+# Décommentez cette ligne si vous souhaitez ignorer le plugin Asset Store Tools
+# / [Aa] ssets / AssetStoreTools *
 
-# Fortran module files
-*.mod
-*.smod
+# Fichiers TextMesh Pro
+[Aa] ssets / TextMesh * Pro /
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
+# Plug-in Jetbrains Rider auto-généré
+[Aa] ssets / Plugins / Editor / JetBrains *
 
-# Executables
-*.exe
-*.out
-*.app
+# Répertoire de cache Visual Studio
+.contre/
+
+# Répertoire cache
+.gradle /
+
+# Solution générée automatiquement VS / MD / Consulo et fichiers de projet
+ExportedObj /
+.consulo /
+* .csproj
+* .unityproj
+* .sln
+* .suo
+* .tmp
+*.utilisateur
+* .userprefs
+* .pidb
+* .booproj
+* .svd
+* .pdb
+* .mdb
+* .opendb
+* .VC.db
+
+# Unity3D a généré des méta-fichiers
+* .pidb.meta
+* .pdb.meta
+* .mdb.meta
+
+# Unity3D a généré un fichier sur les rapports d'incident
+sysinfo.txt
+
+# Construit
+* .apk
+* .unitypackage
+* .symbols.zip
+
+# Fichier généré par Crashlytics
+crashlytics-build.properties
+
+
+# Fin de https://www.gitignore.io/api/unity
