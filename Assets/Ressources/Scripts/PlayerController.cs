@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    private SpriteRenderer mySpriteRenderer;
     private Rigidbody2D body;
 
     Vector2 direction;
@@ -12,14 +13,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float speed = 4;
 
-    [SerializeField] bool isTop = false;
-
     bool canJump = true;
 
     // Start is called before the first frame update
     void Start()
     {
+        //mySpriteRenderer = GetComponent<SpriteRenderer>();
         body = GetComponent<Rigidbody2D>();
+        mySpriteRenderer = GetComponent<SpriteRenderer>();
 
         if (body != null)
         {
@@ -29,43 +30,48 @@ public class PlayerController : MonoBehaviour
         {
             //Debug.Log("No body");
         }
+
+
     }
 
     void FixedUpdate()
     {
-        body.velocity = new Vector3(direction.x * speed, body.velocity.y);
+        body.velocity = new Vector3(direction.x * speed, direction.y);
+       
+        if (direction.x <= -1)
+        {
+            mySpriteRenderer.flipX = true;
+            //Debug.Log("Tourne");
+        }
+        else if (direction.x >= 1)
+        {
+            mySpriteRenderer.flipX = false;
+            //Debug.Log("Retourne");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+         direction = new Vector2(Input.GetAxisRaw("Horizontal") * speed, body.velocity.y);
 
-        if (isTop)
-        {
-            direction = new Vector2(Input.GetAxisRaw("Horizontal") * speed, body.velocity.y);
+         if (Input.GetAxisRaw("Jump") > 0.1f && canJump)
+         {
+             Debug.Log("ici");
+             //direction.y += 10;
+             body.AddForce(Vector2.up * 50);
+             //body.velocity = direction;
+             canJump = true;
+         }
 
-            if (Input.GetAxisRaw("Jump") > 0.1f && canJump)
-            {
-                Debug.Log("ici");
-                direction.y += 10;
-
-                canJump = true;
-            }
-
-        }
-        else
-        {
-            direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed;
-        }
-
-        if (direction.x <= -1)
-        {
-            GetComponent<SpriteRenderer>().flipX = true;
-        }
-        else if (direction.x >= 1)
-        {
-            GetComponent<SpriteRenderer>().flipX = false;
-        }
+        //if (direction.x <= -1)
+        //{
+        //    GetComponent<SpriteRenderer>().flipX = true;
+        //}
+        //else if (direction.x >= 1)
+        //{
+        //    GetComponent<SpriteRenderer>().flipX = false;
+        //}
     }
     void OnTriggerStay2D(Collider2D other)
     {
