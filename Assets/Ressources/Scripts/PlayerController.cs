@@ -11,19 +11,10 @@ public class PlayerController : MonoBehaviour
     Vector2 direction;
 
     [SerializeField]
-    private LayerMask layer;
-
-    [SerializeField]
     private float speed = 4;
 
     [SerializeField]
     private float speedJump = 50;
-
-    [SerializeField]
-    private Transform groundCheck;
-
-    [SerializeField]
-    private float radiusCircle;
 
     bool canJump = true;
 
@@ -42,10 +33,7 @@ public class PlayerController : MonoBehaviour
         {
             //Debug.Log("No body");
         }
-
-
     }
-
     void FixedUpdate()
     {
         body.velocity = new Vector3(direction.x * speed, direction.y);
@@ -69,21 +57,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetAxisRaw("Jump") > 0.1f && canJump)
         {
-            Debug.Log("ici");
+            //Debug.Log("ici");
             //direction.y += 10;
             body.AddForce(Vector2.up * speedJump);
             //body.velocity = direction;
             canJump = false;
         }
-
-        //if (direction.x <= -1)
-        //{
-        //    GetComponent<SpriteRenderer>().flipX = true;
-        //}
-        //else if (direction.x >= 1)
-        //{
-        //    GetComponent<SpriteRenderer>().flipX = false;
-        //}
     }
     void OnTriggerStay2D(Collider2D other)
     {
