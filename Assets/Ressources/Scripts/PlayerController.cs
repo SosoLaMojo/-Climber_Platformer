@@ -11,7 +11,19 @@ public class PlayerController : MonoBehaviour
     Vector2 direction;
 
     [SerializeField]
+    private LayerMask layer;
+
+    [SerializeField]
     private float speed = 4;
+
+    [SerializeField]
+    private float speedJump = 50;
+
+    [SerializeField]
+    private Transform groundCheck;
+
+    [SerializeField]
+    private float radiusCircle;
 
     bool canJump = true;
 
@@ -24,7 +36,7 @@ public class PlayerController : MonoBehaviour
 
         if (body != null)
         {
-           // Debug.Log("Body founded!");
+            // Debug.Log("Body founded!");
         }
         else
         {
@@ -37,7 +49,7 @@ public class PlayerController : MonoBehaviour
     void FixedUpdate()
     {
         body.velocity = new Vector3(direction.x * speed, direction.y);
-       
+
         if (direction.x <= -1)
         {
             mySpriteRenderer.flipX = true;
@@ -53,16 +65,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         direction = new Vector2(Input.GetAxisRaw("Horizontal") * speed, body.velocity.y);
+        direction = new Vector2(Input.GetAxisRaw("Horizontal") * speed, body.velocity.y);
 
-         if (Input.GetAxisRaw("Jump") > 0.1f && canJump)
-         {
-             Debug.Log("ici");
-             //direction.y += 10;
-             body.AddForce(Vector2.up * 50);
-             //body.velocity = direction;
-             canJump = true;
-         }
+        if (Input.GetAxisRaw("Jump") > 0.1f && canJump)
+        {
+            Debug.Log("ici");
+            //direction.y += 10;
+            body.AddForce(Vector2.up * speedJump);
+            //body.velocity = direction;
+            canJump = false;
+        }
 
         //if (direction.x <= -1)
         //{
@@ -78,4 +90,3 @@ public class PlayerController : MonoBehaviour
         canJump = true;
     }
 }
-
