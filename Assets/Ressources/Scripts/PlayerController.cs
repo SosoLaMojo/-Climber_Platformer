@@ -23,15 +23,6 @@ public class PlayerController : MonoBehaviour
     {
         body = GetComponent<Rigidbody2D>();
         mySpriteRenderer = GetComponent<SpriteRenderer>();
-
-        if (body != null)
-        {
-            // Debug.Log("Body founded!");
-        }
-        else
-        {
-            //Debug.Log("No body");
-        }
     }
 
     void FixedUpdate()
@@ -58,9 +49,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetAxisRaw("Jump") > 0.1f && canJump)
         {
             //Debug.Log("ici");
-            //direction.y += 10;
             body.AddForce(Vector2.up * speedJump);
-            //body.velocity = direction;
             canJump = false;
         }
     }
