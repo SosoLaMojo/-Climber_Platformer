@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         direction = new Vector2(Input.GetAxisRaw("Horizontal") * speed, body.velocity.y);
 
-        if (Input.GetAxisRaw("Jump") > 0.1f && canJump)
+        if (Input.GetButtonDown("Jump") && canJump)
         {
             //Debug.Log("ici");
             body.AddForce(Vector2.up * speedJump);
